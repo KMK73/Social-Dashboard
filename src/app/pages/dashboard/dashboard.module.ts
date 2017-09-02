@@ -5,7 +5,7 @@ import { AppTranslationModule } from '../../app.translation.module';
 import { NgaModule } from '../../theme/nga.module';
 
 import { Dashboard } from './dashboard.component';
-import { Router } from '@angular/router';
+
 
 
 import { PopularApp } from './popularApp';
@@ -30,7 +30,6 @@ import { UsersMapService } from './usersMap/usersMap.service';
     FormsModule,
     AppTranslationModule,
     NgaModule,
-    Router,
   ],
   declarations: [
     PopularApp,
