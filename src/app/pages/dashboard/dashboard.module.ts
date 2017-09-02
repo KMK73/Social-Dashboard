@@ -5,7 +5,8 @@ import { AppTranslationModule } from '../../app.translation.module';
 import { NgaModule } from '../../theme/nga.module';
 
 import { Dashboard } from './dashboard.component';
-import { routing }       from './dashboard.routing';
+import { Router } from '@angular/router';
+
 
 import { PopularApp } from './popularApp';
 import { PieChart } from './pieChart';
@@ -29,7 +30,7 @@ import { UsersMapService } from './usersMap/usersMap.service';
     FormsModule,
     AppTranslationModule,
     NgaModule,
-    routing
+    Router,
   ],
   declarations: [
     PopularApp,
@@ -40,7 +41,7 @@ import { UsersMapService } from './usersMap/usersMap.service';
     Feed,
     Todo,
     Calendar,
-    Dashboard
+    Dashboard,
   ],
   providers: [
     CalendarService,
@@ -49,7 +50,7 @@ import { UsersMapService } from './usersMap/usersMap.service';
     PieChartService,
     TodoService,
     TrafficChartService,
-    UsersMapService
+    UsersMapService,
   ]
 })
 export class DashboardModule {}

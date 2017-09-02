@@ -17,17 +17,36 @@ import { GlobalState } from './global.state';
 import { NgaModule } from './theme/nga.module';
 import { PagesModule } from './pages/pages.module';
 
+// Login Modules and Services 
+import { ApiService } from './service/api.service';
+import { ProfileService } from './service/profile.service';
+import { LoginService } from './service/login.service';
+import { AuthGuard } from './guards/login.guard';
+
+
+// FIREBASE 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { environment } from 'environments/environment';
+// import { Login } from 'app/pages/login';
+import { Dashboard } from 'app/pages/dashboard';
+import { SocialLogin } from 'app/pages/social-login/social-login.component';
 
 // Application wide providers
 const APP_PROVIDERS = [
   AppState,
-  GlobalState
+  GlobalState,
+  ApiService,
+  ProfileService,
+  LoginService,
+  AuthGuard,
 ];
 
 export type StoreType = {
   state: InternalStateType,
   restoreInputValues: () => void,
-  disposeOldHosts: () => void
+  disposeOldHosts: () => void,
 };
 
 /**
@@ -36,7 +55,9 @@ export type StoreType = {
 @NgModule({
   bootstrap: [App],
   declarations: [
-    App
+    App,
+    SocialLogin,
+    Dashboard,
   ],
   imports: [ // import Angular's modules
     BrowserModule,
@@ -47,11 +68,14 @@ export type StoreType = {
     NgaModule.forRoot(),
     NgbModule.forRoot(),
     PagesModule,
-    routing
+    routing,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
-    APP_PROVIDERS
-  ]
+    APP_PROVIDERS,
+  ],
 })
 
 export class AppModule {
