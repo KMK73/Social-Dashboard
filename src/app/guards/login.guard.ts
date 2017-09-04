@@ -30,12 +30,17 @@ export class AuthGuard implements CanActivate {
    * If it's not authenticated (!authenticated), then they're denied and directed back to /login .
    */
   canActivate(): Observable<boolean> {
+    console.log(this.auth.authState);
     return Observable.from(this.auth.authState)
       .take(1)
       .map(state => !!state)
       .do(authenticated => {
+        console.log("Auth State", authenticated);
           if (!authenticated) {
-            this.router.navigate(['/login']);
+            this.router.navigate(['/social-login']);
+            // return false; 
+          }else {
+            return true; 
           }
       });
   }

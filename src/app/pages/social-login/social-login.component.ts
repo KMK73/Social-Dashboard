@@ -21,18 +21,19 @@ export class SocialLogin {
    */
   constructor(public af: AngularFireAuth, private router: Router) {
 
-    this.af.authState.subscribe(authState => {
-        if (authState) {
-          this.router.navigateByUrl('/dashboard');
-        }
-      });
+    // this.af.authState.subscribe(authState => {
+    //     if (authState) {
+    //       this.router.navigate(['pages']);
+    //     }
+    //   });
   }
   
   loginFb() {
     this.af.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
         .then(
             (success) => {
-                this.router.navigate(['/dashboard']);
+                console.log(success); 
+                this.router.navigate(['pages']);
               }).catch(
             (err) => {
                 this.error = err;

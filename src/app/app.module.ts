@@ -41,7 +41,7 @@ const APP_PROVIDERS = [
   ApiService,
   ProfileService,
   LoginService,
-  AuthGuard,
+  // AuthGuard,
 ];
 
 export type StoreType = {
@@ -73,7 +73,7 @@ export type StoreType = {
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    DashboardModule,
+    // DashboardModule,
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     APP_PROVIDERS,
