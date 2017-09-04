@@ -32,6 +32,7 @@ import { environment } from 'environments/environment';
 // import { Login } from 'app/pages/login';
 import { Dashboard } from 'app/pages/dashboard';
 import { SocialLogin } from 'app/pages/social-login/social-login.component';
+import { DashboardModule } from "app/pages/dashboard/dashboard.module";
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -57,7 +58,7 @@ export type StoreType = {
   declarations: [
     App,
     SocialLogin,
-    Dashboard,
+    // Dashboard,
   ],
   imports: [ // import Angular's modules
     BrowserModule,
@@ -72,6 +73,7 @@ export type StoreType = {
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    DashboardModule,
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     APP_PROVIDERS,
