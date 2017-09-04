@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { Routes } from '@angular/router';
+import { Routes, Router } from '@angular/router';
 
 import { BaMenuService } from '../theme';
 import { PAGES_MENU } from './pages.menu';
+import { AngularFireAuth } from "angularfire2/auth";
 
 @Component({
   selector: 'pages',
@@ -32,7 +33,7 @@ import { PAGES_MENU } from './pages.menu';
 })
 export class Pages {
 
-  constructor(private _menuService: BaMenuService,) {
+  constructor(private _menuService: BaMenuService, private af: AngularFireAuth, private router: Router) {
   }
 
   ngOnInit() {

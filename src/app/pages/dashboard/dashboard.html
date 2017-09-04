@@ -1,9 +1,10 @@
 <div class="row">
-  <h1>Dashboard</h1>
-
-
-  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-      <button (click)="logout()" class="">Logout</button>
+  <!-- <h1>Dashboard</h1> -->
+  <div class="al-share-auth">
+    <ul class="al-share clearfix">
+      <!-- <li><i class="socicon socicon-twitter" title="{{'login.share_on_twitter' | translate}}"></i></li> -->
+      <li (click)="loginWithGoogle()" ><i class="socicon socicon-google" title="Login With Google"></i></li>
+    </ul>
   </div>
   <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
     <pie-chart></pie-chart>

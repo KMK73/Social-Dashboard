@@ -7,35 +7,38 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class LoginService {
-    loggedIn: boolean;
-    status: Observable<boolean>;
-    private observer: Observer<boolean>;
     error: any;
+    currentUser: firebase.User; 
+    googleProvider = new firebase.auth.GoogleAuthProvider(); 
 
     constructor(public af: AngularFireAuth, private router: Router) {
-        // this.status = new Observable<boolean>(observer =>
-        //     this.observer = observer,
-        // ).share();
-        this.af.authState.subscribe(authState => {
-            if (authState) {
-              this.router.navigateByUrl('/dashboard');
-            }
-          });
+        this.currentUser = this.af.auth.currentUser; 
+        console.log('current', this.currentUser); 
     }
 
-    // changeState(newState: boolean) {
-    //     if (this.observer !== undefined) this.observer.next(newState);
-    // }
 
-  
     loginFb() {
-        this.af.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
+
+        return this.af.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
             .then(
                 (success) => {
-                    this.router.navigate(['/members']);
+                    return success; 
                     }).catch(
                 (err) => {
-                    this.error = err;
-                });
+                    return err;
+                }); 
     }
+
+    loginWithGoogle() {
+
+        return this.af.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+        .then(
+            (success) => {
+                return success; 
+                }).catch(
+            (err) => {
+                return err;
+            }); 
+    }
+
 }

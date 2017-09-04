@@ -32,7 +32,7 @@ import { environment } from 'environments/environment';
 // import { Login } from 'app/pages/login';
 import { Dashboard } from 'app/pages/dashboard';
 import { SocialLogin } from 'app/pages/social-login/social-login.component';
-import { DashboardModule } from "app/pages/dashboard/dashboard.module";
+import { LogoutComponent } from 'app/pages/logout.component';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -59,6 +59,7 @@ export type StoreType = {
     App,
     SocialLogin,
     // Dashboard,
+    LogoutComponent,
   ],
   imports: [ // import Angular's modules
     BrowserModule,

@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 })
 export class Dashboard {
 
+  currentUser: firebase.User; 
+
   constructor(public af: AngularFireAuth, private router: Router) {
     
     // name: string; 
@@ -18,16 +20,34 @@ export class Dashboard {
       if (auth) {
         console.log(auth);
         // this.name = auth.displayName;
+        this.currentUser = auth; 
       }
     });
     
   }
 
-  logout() {
-    this.af.auth.signOut();
-    console.log('logged out');
-    debugger; 
-    this.router.navigateByUrl('/social-login');
+  linkWithGoogle() {
+    // Get reference to the currently signed-in user
+    let prevUser = this.af.auth.currentUser;
+    console.log(prevUser); 
+
+    this.af.auth.currentUser.linkWithPopup(new firebase.auth.GoogleAuthProvider()).then(function(result) {
+      // Accounts successfully linked.
+      console.log(result);
+      // show success alert 
+    
+    }).catch(function(error) {
+      // Handle Errors here.
+      // ...
+      console.log(error); 
+    });
   }
+
+  // logout() {
+  //   this.af.auth.signOut();
+  //   console.log('logged out');
+  //   debugger; 
+  //   this.router.navigateByUrl('/social-login');
+  // }
 
 }
