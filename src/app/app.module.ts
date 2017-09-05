@@ -19,7 +19,6 @@ import { PagesModule } from './pages/pages.module';
 
 // Login Modules and Services 
 import { ApiService } from './service/api.service';
-import { ProfileService } from './service/profile.service';
 import { LoginService } from './service/login.service';
 import { AuthGuard } from './guards/login.guard';
 
@@ -33,14 +32,15 @@ import { environment } from 'environments/environment';
 import { Dashboard } from 'app/pages/dashboard';
 import { SocialLogin } from 'app/pages/social-login/social-login.component';
 import { LogoutComponent } from 'app/pages/logout.component';
+import { FirebaseService } from 'app/service/firebase-service.service';
 
 // Application wide providers
 const APP_PROVIDERS = [
   AppState,
   GlobalState,
   ApiService,
-  ProfileService,
   LoginService,
+  FirebaseService,
   // AuthGuard,
 ];
 

@@ -43,11 +43,4 @@ export class Dashboard {
     });
   }
 
-  // logout() {
-  //   this.af.auth.signOut();
-  //   console.log('logged out');
-  //   debugger; 
-  //   this.router.navigateByUrl('/social-login');
-  // }
-
 }

@@ -14,15 +14,7 @@ import { Component, OnInit } from '@angular/core';
     ngOnInit() {
         this.af.auth.signOut();
         console.log('logged out');
-        debugger; 
         this.router.navigateByUrl('/social-login');
     }
-
-    // logout() {
-    //     this.af.auth.signOut();
-    //     console.log('logged out');
-    //     debugger; 
-    //     this.router.navigateByUrl('/social-login');
-    //   }
   
   }
